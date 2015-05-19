@@ -1,0 +1,45 @@
+<div id="banner">
+    <div ng-controller="BannerController" class="margin hidden-xs">
+        <carousel interval="myInterval">
+            <slide ng-repeat="slide in slides" active="slide.active">
+                <img ng-src="{{slide.image}}" class="carousel_image">
+            </slide>
+        </carousel>
+    </div>
+    <div class="bannerContainer hidden-lg hidden-md hidden-sm">
+        <img src="Images/Main/banner-mobile.png" alt="Lekcje śpiewu w centrum Warszawy" class="img-responsive"/>
+    </div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin">
+    <img src="Images/Main/marta_intro.jpg" alt="Marta Przeniosło - Vocal Master Key" class="img-responsive pull-left img-rounded"/>
+        <p><strong>MARTA PRZENIOSŁO</strong> jest pedagogiem z dużym doświadczeniem, a uczenie jest jej pasją. Stale trenuje głos, realizując
+            zasady bel canto. Na sobie samej sprawdziła wszystko, czym dzieli się ze swoimi uczniami. Jest prawdziwym dowodem
+            na to, iż ta szkoła jest w stanie zapewnić techniczną sprawność każdemu, kto poświęci swój czas i entuzjazm, aby
+            zrozumieć i wypracować wszystkie jej recepty.</p>
+        <a href="#/o_mnie" class="btn btn-danger hidden-xs pull-right">Więcej o mnie</a>
+        <a href="#/o_mnie" class="btn btn-xs  btn-danger hidden-lg hidden-md hidden-sm pull-right">Więcej o mnie</a>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin">
+    <div>
+        <img src="Images/Main/belcanto.png" alt="Bel Canto" class="img-responsive pull-left"/>
+        <p>
+            Emisja głosu prowadzona jest według zasad samej natury, które to odkryła i stosowała <a href="#/o_mnie/bel_canto">Dawna Włoska Szkoła Śpiewu -
+            bel canto</a>. Jeżeli interesuje Cię fachowa i solidna wiedza o technice wokalnej, w której nie ma tajemnic,
+            jeżeli chcesz nauczyć się frazowania i artykulacji w różnych stylach muzycznych, jeżeli chcesz zdobyć narzędzia
+            do najwierniejszej i najlepszej interpretacji tekstu, jeśli piszesz własną muzykę i potrzebujesz konsultacji -
+            zgłoś się na lekcje śpiewu do <strong>Vocal Master Key</strong>.</p>
+        <a href="#/zajecia" class="btn btn-danger hidden-xs pull-right">Więcej o zajęciach</a>
+        <a href="#/zajecia" class="btn btn-xs  btn-danger hidden-lg hidden-md hidden-sm pull-right">Więcej o zajęciach</a>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="well big-margin col-lg-12 col-md-12 col-sm-12 col-xs-12 center-text-align" style="margin-top:50px;">
+        <h1><a href="#/zajecia/zapisy">UMÓW SIĘ NA LEKCJĘ PRÓBNĄ!</a></h1>
+        <p>Zapraszam na kursy śpiewu dla osób które chcą profesjonalnie i systematycznie kształcić swój głos.</p>
+        <p><a class="btn btn-danger btn-lg" href="#/zajecia">Więcej o kursie</a></p>
+    </div>
+</div>
+

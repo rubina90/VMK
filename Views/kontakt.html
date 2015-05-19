@@ -1,0 +1,70 @@
+<div class="col-lg-12 col-md-12" ng-controller="ContactController">
+    <p class="panel-title">Adres</p>
+    <hr />
+    <div class="panel-body">
+        <div class="angular-google-map-container col-lg-6 col-md-6 img-responsive hidden-xs" ng-controller="MapController">
+            <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+                <ui-gmap-marker coords="marker.coords" options="marker.options"  idkey="marker.id" >
+                </ui-gmap-marker>
+            </ui-gmap-google-map>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <img src="Images/Common/staszic2.jpg" alt="Pałac Staszica" class="img-responsive img-rounded pull-left left-right-margin"/>
+            <div class="left-text-align col-lg-12 col-md-12">
+                <p><h4>{{ companyName }}</h4></p>
+                <p><span class="label label-default">Imię i nazwisko:</span> {{ firstName + " " + lastName}}</p>
+                <p><span class="label label-default">Telefon:</span> {{ telephone }}</p>
+                <p><span class="label label-default">Email:</span> {{ emailAddress }}</p>
+                <p><span class="label label-default">Adres:</span> {{ address }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <p class="panel-title">Formularz kontaktowy</p>
+    <hr />
+    <div ng-controller="ContactController"  class="col-lg-6 col-md-6 col-sm-6">
+        <div class="panel-body">
+        <form ng-submit="submit(contactform)" name="contactform" method="post" action="" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="inputName" class="col-lg-2 control-label">Imię:</label>
+                <div class="col-lg-10">
+                    <input ng-model="formData.inputName" type="text" class="form-control" id="inputName" name="inputName" placeholder="" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-2 control-label">Email:</label>
+                <div class="col-lg-10">
+                    <input ng-model="formData.inputEmail" type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="" required>
+                </div>
+            </div>
+            <div class="form-group" >
+                <label for="inputSubject" class="col-lg-2 control-label">Temat:</label>
+                <div class="col-lg-10">
+                    <input ng-model="formData.inputSubject" type="text" class="form-control" id="inputSubject" name="inputSubject" placeholder="" required>
+                </div>
+            </div>
+            <div class="form-group" >
+                <label for="inputMessage" class="col-lg-2 control-label">Wiadomość:</label>
+                <div class="col-lg-10">
+                    <textarea ng-model="formData.inputMessage" class="form-control" rows="4" id="inputMessage" name="inputMessage" placeholder="Wpisz treść wiadomości" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button type="submit" class="btn btn-default" ng-disabled="submitButtonDisabled">
+                        Wyślij
+                    </button>
+                </div>
+            </div>
+        </form>
+        <p ng-class="result" class="alert big-margin">{{ resultMessage }}</p>
+    </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <p class="alert alert-default">
+            Jeśli chcesz się zapisać na kurs, zgłosić na lekcję próbną lub dowiedzieć czegoś o zajęciach - pisz śmiało!
+        </p>
+    </div>
+</div>

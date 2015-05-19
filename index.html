@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Vocal master key</title>
+        <link rel="shortcut icon" href="Images/Common/favicon.ico" type="image/x-icon">
+
+        <script src="Scripts/angular.min.js" type="text/javascript"></script>
+        <script src="Scripts/angular-route.min.js" type="text/javascript"></script>
+        <script src="Scripts/ng-breadcrumbs.min.js" type="text/javascript"></script>
+        <script src="Scripts/ui-bootstrap-custom-0.12.0.min.js" type="text/javascript"></script>
+        <script src="Scripts/ui-bootstrap-custom-tpls-0.12.0.min.js" type="text/javascript"></script>
+        <script src='Scripts/lodash.min.js' type="text/javascript"></script>
+        <script src='Scripts/angular-google-maps.min.js' type="text/javascript"></script>
+
+        <script src="Controllers/app.js"></script>
+        <script src="Controllers/AboutDropDownController.js" type="text/javascript"></script>
+        <script src="Controllers/CarouselController.js" type="text/javascript"></script>
+        <script src="Controllers/ClassesDropDownController.js" type="text/javascript"></script>
+        <script src="Controllers/ContactController.js" type="text/javascript"></script>
+        <script src="Controllers/ClassesProgramController.js" type="text/javascript"></script>
+        <script src="Controllers/BreadcrumbsController.js" type="text/javascript"></script>
+        <script src="Controllers/NavController.js" type="text/javascript"></script>
+        <script src="Controllers/MapController.js" type="text/javascript"></script>
+
+        <link href="Styles/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="Styles/site.css" rel="stylesheet" type="text/css">
+
+        <link href='http://fonts.googleapis.com/css?family=Kotta+One&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    </head>
+    <body ng-app="vmk">
+        <header class="container">
+            <nav class="navbar navbar-default navbar-fixed-top navContainer" role="navigation" ng-controller="NavController">
+                <div class="navbar-header">
+                    <button class="btn btn-success navbar-toggle back-color"
+                            ng-init="isCollapsed = true"
+                            ng-click="isCollapsed = !isCollapsed"
+                            data-toggle="collapse"
+                            data-target=".navbar-collapse"><span class="glyphicon glyphicon-align-justify back-color"></span></button>
+                    <div id="logo">
+                            <a href="#">
+                               <img ng-src="Images/Common/logo72.png" alt="Vocal Master Key" class="hidden-xs hidden-sm"/>
+                                <img ng-src="Images/Common/logo36.png" alt="Vocal Master Key" class="hidden-lg hidden-md"/>
+                            </a>
+                    </div>
+                </div>
+                <div class="navbar-collapse mobile-menu-height" ng-class="isCollapsed ? 'collapse' : 'in'">
+                    <ul class="nav navbar-nav navbar-right headerMenu headerLinks hidden-xs" style = "position: inherit; bottom: 0px">
+                        <li class="nav dropdown minus-margins" dropdown ng-controller="AboutDropDownController">
+                            <a href="#/o_mnie" class="dropdown-toggle menu-links ">{{ title }}<span class="caret"></span></a>
+                            <ul class="dropdown-menu on-hover">
+                                <li class="center-text-align"ng-repeat="item in items"><a href="{{item.address}}">{{ item.title }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav dropdown minus-margins" dropdown ng-controller="ClassesDropDownController">
+                            <a href="#/zajecia" class="dropdown-toggle menu-links">{{ title }}<span class="caret"></span></a>
+                            <ul class="dropdown-menu on-hover">
+                                <li class="center-text-align" ng-repeat="item in items"><a href="{{item.address}}">{{ item.title }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav minus-margins"><a href="#/aktualnosci" class="menu-links">Aktualności</a></li>
+                        <li class="nav minus-margins"><a href="#/kontakt" class="menu-links">Kontakt</a></li>
+                    </ul>
+                    <!-- Styles for mobile navabr -->
+                    <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg" style = "position: inherit; bottom: 0px">
+                        <li class="nav dropdown" dropdown ng-controller="AboutDropDownController">
+                            <a href="#/o_mnie" class="menu-links pull-left"> {{ title }}</a>
+                            <button class="dropdown-toggle caret-button minus-margins caret-top-margin" dropdown-toggle>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu mobile-dropdown-link">
+                                <li class="center-text-align" ng-repeat="item in items"><a href="{{item.address}}">{{ item.title }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav dropdown" dropdown ng-controller="ClassesDropDownController">
+                            <a href="#/zajecia" class="menu-links pull-left">{{ title }}</a>
+                            <button class="dropdown-toggle caret-button minus-margins caret-top-margin" dropdown-toggle>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="center-text-align" ng-repeat="item in items"><a href="{{item.address}}">{{ item.title }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav"><a href="#/aktualnosci" class="menu-links pull-left">Aktualności</a></li>
+                        <li class="nav"><a href="#/kontakt" class="menu-links pull-left">Kontakt</a></li>
+                    </ul>
+                    <!-- End styles for mobile navabr -->
+                </div>
+            </nav>
+            <div ng-controller="BreadcrumbsController">
+                <ol class="ab-nav breadcrumb">
+                    <li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path"
+                        ng-if="breadcrumb.label"
+                        ng-class="{ active: $last }">
+                        <a ng-if="!$last"
+                           ng-href="#{{ breadcrumb.path }}"
+                           ng-bind="breadcrumb.label"
+                           class="margin-right-xs"></a>
+                        <span ng-if="$last" ng-bind="breadcrumb.label"></span>
+                    </li>
+                </ol>
+                <hr class="minus-top-margin"/>
+            </div>
+        </header>
+        <main>
+            <div class="container" ng-view></div>
+        </main>
+        <footer class="container">
+            <div class="row">
+                <nav>
+                    <div id="About" class="col-lg-2 col-md-2 col-sm-2 hidden-xs footerContent" ng-controller="AboutDropDownController">
+                        <h5><a href="#/o_mnie" class="footer-links">{{ title }}</a></h5>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="item in items">
+                                <a href="{{item.address}}">{{item.title}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="Classes" class="col-lg-2 col-md-2 col-sm-2 hidden-xs footerContent" ng-controller="ClassesDropDownController">
+                        <h5><a href="#/zajecia" class="footer-links">{{ title }}</a></h5>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="item in items">
+                                <a href="{{item.address}}">{{item.title}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="News" class="col-lg-2 col-md-2 col-sm-2 hidden-xs footerContent">
+                        <h5><a href="#/aktualnosci" class="footer-links">Aktualności</a></h5>
+                        <div>
+                            <a href="https://myspace.com/martaprzenioslo" target="_blank" class="social-icons"><img src="Images/Common/facebook29.png" alt="Marta Przeniosło"/></a>
+                            <a href="https://www.youtube.com/user/MoonamissOfficial/videos" target="_blank" class="social-icons"><img src="Images/Common/youtube7.png" alt="Marta Przeniosło"/></a>
+                            <a href="https://plus.google.com/103852467852705546435/posts" target="_blank" class="social-icons"><img src="Images/Common/social5.png" alt="Marta Przeniosło"/></a>
+                        </div>
+                    </div>
+                    <div id="Contact" class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 footerContent" ng-controller="ContactController">
+                        <h5><a href="#/kontakt" class="footer-links">{{ title }}</a></h5>
+                        <div>
+                            <p><h4>{{ companyName }}</h4></p>
+                            <p><span class="label label-default">Imię i nazwisko:</span> {{ firstName + " " + lastName}}</p>
+                            <p><span class="label label-default">Telefon:</span> {{ telephone }}</p>
+                            <p><span class="label label-default">Email:</span> {{ emailAddress }}</p>
+                            <p><span class="label label-default">Adres:</span> {{ address }}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 hidden-xs">
+                        <hr class="minus-bottom-margin"/>
+                        <p><small>Copyright 2015 Dorota Przeniosło</small></p>
+                    </div>
+
+                </nav>
+            </div>
+        </footer>
+    </body>
+</html>
